@@ -254,6 +254,7 @@ func (instance *Instance) filterWildcards(st *store.Store) error {
 					}
 
 					isWildcard, ips := instance.wildcardResolver.LookupHost(hostname, IP)
+					gologger.Info().Msgf("hostname: %s - IP: %s => isWildcard: %v - ips: %v\n", hostname, IP, isWildcard, ips)
 					if len(ips) > 0 {
 						for ip := range ips {
 							// we add the single ip to the wildcard list
