@@ -249,6 +249,7 @@ func (instance *Instance) filterWildcards(st *store.Store) error {
 
 					select {
 					case <-ctx.Done():
+						gologger.Info().Msgf("hostname: %s - IP: %s => ctx: done", hostname, IP)
 						return
 					default:
 					}
