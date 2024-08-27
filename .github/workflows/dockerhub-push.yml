@@ -17,7 +17,7 @@ jobs:
       - name: Get Github tag
         id: meta
         run: |
-          curl --silent "https://api.github.com/repos/projectdiscovery/shuffledns/releases/latest" | jq -r .tag_name | xargs -I {} echo TAG={} >> $GITHUB_OUTPUT
+          curl --silent "https://api.github.com/repos/Mzack9999/shuffledns/releases/latest" | jq -r .tag_name | xargs -I {} echo TAG={} >> $GITHUB_OUTPUT
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -37,4 +37,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64,linux/arm
           push: true
-          tags: projectdiscovery/shuffledns:latest,projectdiscovery/shuffledns:${{ steps.meta.outputs.TAG }}
+          tags: Mzack9999/shuffledns:latest,Mzack9999/shuffledns:${{ steps.meta.outputs.TAG }}

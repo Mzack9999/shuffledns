@@ -12,11 +12,11 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Mzack9999/shuffledns/pkg/parser"
+	"github.com/Mzack9999/shuffledns/pkg/store"
+	"github.com/Mzack9999/shuffledns/pkg/wildcards"
 	"github.com/projectdiscovery/dnsx/libs/dnsx"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/shuffledns/pkg/parser"
-	"github.com/projectdiscovery/shuffledns/pkg/store"
-	"github.com/projectdiscovery/shuffledns/pkg/wildcards"
 	fileutil "github.com/projectdiscovery/utils/file"
 	folderutil "github.com/projectdiscovery/utils/folder"
 	ioutil "github.com/projectdiscovery/utils/io"
@@ -260,7 +260,7 @@ func (instance *Instance) filterWildcards(st *store.Store) error {
 							if err := instance.wildcardStore.Set(ip); err != nil {
 								gologger.Error().Msgf("could not set wildcard ip: %s", err)
 							}
-							gologger.Debug().Msgf("Removing wildcard %s\n", ip)
+							gologger.Info().Msgf("Removing wildcard %s\n", ip)
 						}
 					}
 
@@ -270,7 +270,7 @@ func (instance *Instance) filterWildcards(st *store.Store) error {
 							gologger.Error().Msgf("could not set wildcard ip: %s", err)
 						}
 						ipCancelFunc()
-						gologger.Debug().Msgf("Removed wildcard %s\n", IP)
+						gologger.Info().Msgf("Removed wildcard %s\n", IP)
 					}
 
 				}(ipCtx, ipCancelFunc, ip, hostname)

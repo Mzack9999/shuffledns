@@ -11,8 +11,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/Mzack9999/shuffledns/pkg/massdns"
 	"github.com/projectdiscovery/gologger"
-	"github.com/projectdiscovery/shuffledns/pkg/massdns"
 	fileutil "github.com/projectdiscovery/utils/file"
 	"github.com/rs/xid"
 )
@@ -36,7 +36,7 @@ func New(options *Options) (*Runner, error) {
 		if options.MassdnsPath == "" {
 			return nil, errors.New("could not find massdns binary")
 		}
-		gologger.Debug().Msgf("Discovered massdns binary at %s\n", options.MassdnsPath)
+		gologger.Info().Msgf("Discovered massdns binary at %s\n", options.MassdnsPath)
 	}
 
 	// Create a temporary directory that will be removed at the end
